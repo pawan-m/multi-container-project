@@ -22,3 +22,20 @@ after_success:
   - docker push p20min/multi-nginx 
   - docker push p20min/multi-server
   - docker push p20min/multi-worker
+
+
+deploy: 
+
+
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: eu-central-1
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-eu-central-1-496870371832
+  bucket_path: docker-multi
+  on: 
+    branch: master 
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_ACCESS_KEY
